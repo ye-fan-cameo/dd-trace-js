@@ -50,24 +50,26 @@ module.exports = {
         CI_PIPELINE_ID: GITLAB_PIPELINE_ID,
         CI_PROJECT_PATH,
         CI_PIPELINE_IID,
-        CI_PIPELINE_URL,
+        CI_PIPELINE_URL: GITLAB_PIPELINE_URL,
         CI_PROJECT_DIR,
         CI_COMMIT_BRANCH,
         CI_COMMIT_SHA,
         CI_REPOSITORY_URL
       } = env
-      return {
+      const result = {
         [BUILD_SOURCE_ROOT]: CI_PROJECT_DIR,
         [CI_PIPELINE_ID]: GITLAB_PIPELINE_ID,
         [CI_PIPELINE_NAME]: CI_PROJECT_PATH,
         [CI_PIPELINE_NUMBER]: CI_PIPELINE_IID,
-        [CI_PIPELINE_URL]: `${(CI_PIPELINE_URL || '').replace('/-/pipelines/', '/pipelines/')}`,
+        [CI_PIPELINE_URL]: `${(GITLAB_PIPELINE_URL || '').replace('/-/pipelines/', '/pipelines/')}`,
         [CI_PROVIDER_NAME]: 'gitlab',
         [CI_WORKSPACE_PATH]: CI_PROJECT_DIR,
         [GIT_BRANCH]: CI_COMMIT_BRANCH,
         [GIT_COMMIT_SHA]: CI_COMMIT_SHA,
         [GIT_REPOSITORY_URL]: CI_REPOSITORY_URL
       }
+      console.log('GITLAB RESULT', result)
+      return result
     }
 
     if (env.CIRCLECI) {

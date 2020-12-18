@@ -25,8 +25,8 @@ function getTestMetadata () {
 
   return {
     [TEST_FRAMEWORK]: 'jest',
-    ...ciMetadata,
-    ...gitMetadata
+    ...gitMetadata,
+    ...ciMetadata
   }
 }
 
