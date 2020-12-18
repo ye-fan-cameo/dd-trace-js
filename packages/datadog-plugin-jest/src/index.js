@@ -23,11 +23,13 @@ function getTestMetadata () {
   const ciMetadata = getCIMetadata()
   const gitMetadata = getGitMetadata()
 
-  return {
+  const result = {
     [TEST_FRAMEWORK]: 'jest',
     ...gitMetadata,
     ...ciMetadata
   }
+  console.log('test metadata', result)
+  return result
 }
 
 function wrapEnvironment (BaseEnvironment) {

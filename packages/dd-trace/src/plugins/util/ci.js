@@ -20,6 +20,7 @@ module.exports = {
   getCIMetadata () {
     const { env } = process
 
+    console.log('ci metadata', env)
     if (env.JENKINS_URL) {
       const {
         WORKSPACE,
